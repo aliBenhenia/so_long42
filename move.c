@@ -7,7 +7,7 @@ int	move(int keycode, t_long *vars)
 	{
 		exit(0);
 	}
-	if (vars->coins == 0)
+	if (vars->coins == 1)
 	{
 		dt.fe = 0;
 	}
@@ -15,14 +15,14 @@ int	move(int keycode, t_long *vars)
 	if (vars->map[vars->y / 30 ][(vars->x) / 30] == 'E' && vars->coins == 0)
 	{
 		ft_free(vars->map);
-		exit(1);
+		exit(0);
 	}
 	if (keycode == 0 && vars->map[vars->y / 30 ][(vars->x - 30) / 30] != '1')
 	{
 		if (vars->map[vars->y / 30 ][(vars->x) / 30] == 'C')
 		{
-			vars->map[vars->y / 30 ][(vars->x) / 30] = '0';
 			vars->coins--;
+			vars->map[vars->y / 30 ][(vars->x) / 30] = '0';
 		}
 		if (dt.fe == -1 && vars->map[vars->y / 30 ][(vars->x - 30) / 30] == 'E')
 			return 1 ;
@@ -51,7 +51,7 @@ int	move(int keycode, t_long *vars)
 		vars->x += 30;
 		mlx_put_image_to_window(vars->mlx, vars->wind , vars->img[2], vars->x , vars->y);
 		vars->moves++;
-		printf("moves : %d\n",vars->moves);
+		printf("moves : %d \n",vars->moves);
 	}
 	if (keycode == 13 && vars->map[(vars->y - 30) / 30 ][(vars->x) / 30] != '1')
 	{
@@ -89,5 +89,6 @@ int	move(int keycode, t_long *vars)
 		vars->moves++;
 		printf("moves : %d\n",vars->moves);
 	}
+	printf("coin -------> %d\n",vars->coins);
 	return (0);
 }

@@ -26,19 +26,19 @@ void	render_map(t_long *data)
 			}
 			else if (data->map[f][a] == 'E')
 			{
-				// if (data->coins == 1)
-				// {
-				// 	mlx_put_image_to_window(data->mlx, data->wind , data->img[5], a * 30,f * 30);
-				// }
+				if (data->coins == 1)
+				{
+					mlx_put_image_to_window(data->mlx, data->wind , data->img[5], a * 30,f * 30);
+				}
 				// else if (data->coins > 1)
 				// 	mlx_put_image_to_window(data->mlx, data->wind , data->img[3], a * 30,f * 30);
 				// else
 					mlx_put_image_to_window(data->mlx, data->wind , data->img[3], a * 30,f * 30);
 			}
-			else if (data->map[f][a] == '0')
-			{
-				mlx_put_image_to_window(data->mlx, data->wind , data->img[4], a * 30,f * 30);
-			}
+			// else if (data->map[f][a] == '0')
+			// {
+			// 	mlx_put_image_to_window(data->mlx, data->wind , data->img[4], a * 30,f * 30);
+			// }
 			a++;
 		}
 		f++;
