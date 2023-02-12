@@ -60,23 +60,22 @@ void    check_wall_row(char *s)
     }
 	free(line);
     j = 0;
-    // while (line)
-    // {
-    //     t = malloc(sizeof(char*) * strlen(line));
-    //     strcpy(t,line);
-    //     line = get_next_line(i);
-    //     if (line == NULL)
-    //     {
-    //         while (t[j] != '\0' && t[j] != '\n')
-    //         {
-    //             if (t[j] != '1')
-    //                 ft_error("should all be walls\n");
-    //             j++;
-    //         }
-    //     }
-    //     free(line);
-    //     free(t);
-    // }
-    // free(line);
-    // free(t);
+    t = malloc(sizeof(char*) * strlen(line));
+    while (line)
+    {
+        strcpy(t,line);
+        line = get_next_line(i);
+        if (line == NULL)
+        {
+            while (t[j] != '\0' && t[j] != '\n')
+            {
+                if (t[j] != '1')
+                    ft_error("should all be walls\n");
+                j++;
+            }
+        }
+        free(line);
+    }
+    free(line);
+    free(t);
 }

@@ -1,5 +1,5 @@
 #include "so_long.h"
-void	render_map(t_long *data)
+void	render_map(t_long *data,t_help *dt)
 {
 	int f = 0;
 	int a = 0;
@@ -18,10 +18,10 @@ void	render_map(t_long *data)
 			{
 				mlx_put_image_to_window(data->mlx, data->wind , data->img[1], a * 30,f * 30);
 			}
-			else if (data->map[f][a] == 'P' && dt.fx == -1)
+			else if (data->map[f][a] == 'P' && dt->fx == -1)
 			{
-				dt.fx = a * 30;
-				dt.fy = f * 30;
+				dt->fx = a * 30;
+				dt->fy = f * 30;
 				mlx_put_image_to_window(data->mlx, data->wind , data->img[2], a * 30,f * 30);
 			}
 			else if (data->map[f][a] == 'E')

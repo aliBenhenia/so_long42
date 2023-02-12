@@ -91,5 +91,5 @@ void	parsing(char *s,t_long *data)
 	countHeight(s,data);
 	countCollect(s, data);
 	fill_map(s,data);
-	// printf("psss\n");
+	
 }

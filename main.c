@@ -40,8 +40,9 @@ void dd()
 }
 int main(int ac, char *av[])
 {
-	// atexit(dd);
+	atexit(dd);
 	t_long	data;
+	t_help dt;
 	if (ac == 1)
 		ft_error("you have only one arg\n");
 	if (ac > 2)
@@ -50,10 +51,11 @@ int main(int ac, char *av[])
 	init_data(&data,&dt);
 	data.wind = mlx_new_window(data.mlx , data.width * 30, data.height * 30, "so_long");
 	load_imgs(&data);
-	render_map(&data);
+	render_map(&data, &dt);
 	data.x = dt.fx;
 	data.y = dt.fy;
-	mlx_hook(data.wind, 2, 1L<<0, move, &data);
+	dt.fe = -1;
+	mlx_hook(data.wind, 2, 0, move, &data);
 	mlx_loop(data.mlx);
 	ft_free(data.map);
 	
