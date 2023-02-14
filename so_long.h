@@ -3,6 +3,7 @@
 #include <mlx.h>
 #include <unistd.h>
 # include<fcntl.h>
+# include<stdio.h>
 # include<string.h>
 #include "./get_next_line42/get_next_line.h"
 typedef struct t_long

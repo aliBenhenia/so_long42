@@ -38,6 +38,10 @@ void dd()
 {
 	system("leaks a.out");
 }
+int close1()
+{
+	exit(1);
+}
 int main(int ac, char *av[])
 {
 	atexit(dd);
@@ -56,8 +60,9 @@ int main(int ac, char *av[])
 	data.y = dt.fy;
 	dt.fe = -1;
 	mlx_hook(data.wind, 2, 0, move, &data);
+	mlx_hook(data.wind , 17, 0L, close1, NULL);
 	mlx_loop(data.mlx);
 	ft_free(data.map);
-	
+
 	return (0);
 }
