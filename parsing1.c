@@ -11,44 +11,27 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-// void fill2(char **map1, int width, int height) {
-//     int i, j;
 
-//     map1 = (char **) malloc(height * sizeof(char *));
-//     for (i = 0; i < height; i++) {
-//         map1[i] = (char *) malloc(width * sizeof(char));
-//     }
+char **fill_map2(char **map, int size, char *s)
+{
+	int		fd;
+	int		i;
+	char	*line;
 
-//     for (i = 0; i < height; i++) {
-//         for (j = 0; j < width; j++) {
-//             map1[i][j] = '0';
-//         }
-//     }
-// }
-// int check_path(t_long *map, char **map2, int y, int x,int h, int w)
-// {
-// 	if (y < 0 || y >= h || x < 0 || x >= w)
-// 	{
-//         return 0;
-//     }
-// 	printf("pss\n");
-//     if (map2[y][x] == '1')
-//         return 0;
-//     map2[y][x] = '1';
-//      if (map->map[y][x] == 'E')
-//         return 1;
-//     if (map->map[y][x] == '1')
-//         return 0;
-//     if (check_path(map, map2, y, x + 1,h,w) == 1)
-//         return 1;
-//     if (check_path(map, map2, y + 1, x,h,w) == 1)
-//         return 1;
-//     if (check_path(map, map2, y, x - 1,h,w) == 1)
-//         return 1;
-//     if (check_path(map, map2, y - 1, x,h,w) == 1)
-//         return 1;
-//     return 0;
-// }
+	i = 0;
+	map = (char **) malloc(sizeof(char *) * size);
+	fd = open(s, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		map[i] = line;
+		i++;
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (map);
+}
+
 void	count_height(char *s, t_long *data)
 {
 	int		i;
@@ -126,6 +109,8 @@ void	count_collect(char *s, t_long *data)
 
 void	parsing(char *s, t_long *data)
 {
+	char **map2;
+	map2 = NULL;
 	check_extention(s);
 	check_arrounded(s);
 	check_wall_row(s);
@@ -136,8 +121,10 @@ void	parsing(char *s, t_long *data)
 	count_height(s, data);
 	count_collect(s, data);
 	fill_map(s, data);
-	// char **map = (char**) malloc(data->height * sizeof(char*));
-	// fill2(map,data->width, data->height);
-	// // printf("pss\n");
-	// check_path(data,map,data->y,data->x, data->height,data->width);
+	map2 = fill_map2(map2, data->height, s);
+	if_valid_map(map2, data->height, data->width);
+	// fill_map2(map2, data->height, s);
+	// int i = 0;
+	// while(i < data->height)
+	// printf("%s", map2[i++]);
 }
