@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abenheni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 13:43:18 by abenheni          #+#    #+#             */
+/*   Updated: 2023/02/15 13:43:26 by abenheni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_error(char *s)
@@ -7,7 +19,7 @@ void	ft_error(char *s)
 	i = 0;
 	while (s[i])
 	{
-		write(2,&s[i], 1);
+		write(2, &s[i], 1);
 		i++;
 	}
 	exit(1);
@@ -20,9 +32,10 @@ void	check_extention(char *s)
 	i = 0;
 	while (s[i])
 		i++;
-	if (s[i - 1] == 'r' && s[i - 2] == 'e' && s[i - 3] == 'b' && s[i - 4] == '.')
+	if (s[i - 1] == 'r' && s[i - 2] == 'e' && s[i - 3] == 'b'
+		&& s[i - 4] == '.')
 	{
-		i = open(s,O_RDONLY);
+		i = open(s, O_RDONLY);
 		if (i == -1)
 		{
 			ft_error("error with opening file or not exist\n");
@@ -30,7 +43,7 @@ void	check_extention(char *s)
 		}
 		else
 			close(i);
-		return;
+		return ;
 	}
 	ft_error("file not ending with .ber\n");
 }
@@ -54,10 +67,10 @@ int	check_end_of_map(char *s)
 
 void	check_arrounded(char *s)
 {
-	int	i;
+	int		i;
 	char	*line;
 
-	i = open(s,O_RDONLY);
+	i = open(s, O_RDONLY);
 	line = get_next_line(i);
 	while (line)
 	{
@@ -71,6 +84,7 @@ void	check_arrounded(char *s)
 	}
 	close(i);
 }
+
 int	line_contain(char *s, char c)
 {
 	int	i;
@@ -82,7 +96,7 @@ int	line_contain(char *s, char c)
 	r = -1;
 	while (s[i])
 	{
-		if (s[i] == c && f == 0)
+		if (s[i++] == c && f == 0)
 		{
 			f = 1;
 			r = 1;
@@ -92,11 +106,10 @@ int	line_contain(char *s, char c)
 			r = 0;
 			break ;
 		}
-		i++;
 	}
 	if (r == 0)
 		ft_error("line contain more then one exit\n");
-	else if(r == 1)
+	else if (r == 1)
 		return (1);
 	return (0);
 }

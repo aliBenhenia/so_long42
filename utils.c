@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abenheni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:15:39 by abenheni          #+#    #+#             */
+/*   Updated: 2023/02/15 14:15:41 by abenheni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_putchar_fd(char c, int fd)
@@ -5,16 +17,16 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 }
 
-void    ft_putstr(char *s)
+void	ft_putstr(char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-    {
-        write(1,&s[i],1);
-        i++;
-    }
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 }
 
 void	ft_putnbr_fd(int n, int fd)
