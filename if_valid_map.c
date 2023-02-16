@@ -40,6 +40,27 @@ int	check_if_valid(char **map2, int h, int w)
 	}
 	return (0);
 }
+int	check_if_valid2(char **map2, int h, int w)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < h)
+	{
+		x = 0;
+		while (x < w)
+		{
+			if (map2[y][x] == 'C')
+			{
+				return (1);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
 
 int	check_if_arounded_p(char **map2, int x, int y)
 {
@@ -93,5 +114,7 @@ void	if_valid_map(char **map2, int h, int w)
 		y++;
 	}
 	if (check_if_valid(map2, h, w) == 0)
-		ft_error("invalid path\n");
+		ft_error("invalid path for player\n");
+	if (check_if_valid2(map2, h, w))
+		ft_error("invalid path for collectable\n");
 }
