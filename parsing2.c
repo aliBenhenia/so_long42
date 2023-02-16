@@ -72,6 +72,8 @@ void	check_arrounded(char *s)
 
 	i = open(s, O_RDONLY);
 	line = get_next_line(i);
+	if (line == NULL)
+		ft_error("file is empty\n");
 	while (line)
 	{
 		if (line[0] != '1' || check_end_of_map(line))

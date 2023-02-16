@@ -90,7 +90,7 @@ int	check_collect(char *s, char c)
 
 void	check_characters(char *s)
 {
-	if (!check_one_chracter(s, 'E') || check_one_chracter(s, 'E') == -1)
+	if (check_one_chracter(s, 'E') == 0 || check_one_chracter(s, 'E') == -1)
 		ft_error("you should put one exit only");
 	if (!check_collect(s, 'C'))
 		ft_error("must at least one collectable");

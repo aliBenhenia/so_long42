@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-char **fill_map2(char **map, int size, char *s)
+char	**fill_map2(char **map, int size, char *s)
 {
 	int		fd;
 	int		i;
@@ -28,6 +28,7 @@ char **fill_map2(char **map, int size, char *s)
 		i++;
 		line = get_next_line(fd);
 	}
+	map[i] = NULL;
 	close(fd);
 	return (map);
 }
@@ -105,6 +106,7 @@ void	count_collect(char *s, t_long *data)
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 }
 
 void	parsing(char *s, t_long *data)
@@ -123,8 +125,5 @@ void	parsing(char *s, t_long *data)
 	fill_map(s, data);
 	map2 = fill_map2(map2, data->height, s);
 	if_valid_map(map2, data->height, data->width);
-	// fill_map2(map2, data->height, s);
-	// int i = 0;
-	// while(i < data->height)
-	// printf("%s", map2[i++]);
+	ft_free(map2);
 }

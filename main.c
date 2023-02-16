@@ -53,10 +53,12 @@ int	close1(void)
 {
 	exit(1);
 }
+
 void dd()
 {
-	system("leaks a.out");
+	system("leaks so_long");
 }
+
 int	main(int ac, char *av[])
 {
 	t_long	data;

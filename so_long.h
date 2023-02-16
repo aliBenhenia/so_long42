@@ -60,5 +60,5 @@ void	ft_free(char *p[]);
 void	ft_putstr(char *s);
 void	ft_putnbr_fd(int n, int fd);
 void if_valid_map(char **map2, int h, int w);
-
+char	**fill_map2(char **map, int size, char *s);
 #endif

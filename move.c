@@ -110,10 +110,10 @@ int	move(int keycode, t_long *vars, t_help *dt)
 	if (keycode == 0 && vars->map[vars->y / 30][(vars->x - 30) / 30] != '1')
 		move_handle1(vars, dt);
 	if (keycode == 2 && vars->map[vars->y / 30][(vars->x + 30) / 30] != '1')
-		move_handle2( vars, dt);
+		move_handle2(vars, dt);
 	if (keycode == 13 && vars->map[(vars->y - 30) / 30][(vars->x) / 30] != '1')
-		move_handle3( vars, dt);
+		move_handle3(vars, dt);
 	if (keycode == 1 && vars->map[(vars->y + 30) / 30][(vars->x) / 30] != '1')
-		move_handle4( vars, dt);
+		move_handle4(vars, dt);
 	return (0);
 }
