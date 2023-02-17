@@ -40,6 +40,7 @@ int	check_if_valid(char **map2, int h, int w)
 	}
 	return (0);
 }
+
 int	check_if_valid2(char **map2, int h, int w)
 {
 	int	y;

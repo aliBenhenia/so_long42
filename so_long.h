@@ -27,7 +27,7 @@ typedef struct t_long
 	void	*wind;
 	void	**pic;
 	void	**img;
-	void	**paths;
+	char	**map2;
 	char	**map;
 	void	*wall;
 	void	*player;
@@ -59,6 +59,7 @@ void	check_wall_row(char *s);
 void	ft_free(char *p[]);
 void	ft_putstr(char *s);
 void	ft_putnbr_fd(int n, int fd);
-void if_valid_map(char **map2, int h, int w);
-char	**fill_map2(char **map, int size, char *s);
+void	if_valid_map(char **map2, int h, int w);
+void 	fill_map2(char *s, t_long *data);
+int		check_one_chracter(char *s, char c);
 #endif

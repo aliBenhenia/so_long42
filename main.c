@@ -51,7 +51,7 @@ void	init_data(t_long *data, t_help *dt)
 
 int	close1(void)
 {
-	exit(1);
+	exit(0);
 }
 
 void dd()
@@ -63,7 +63,7 @@ int	main(int ac, char *av[])
 {
 	t_long	data;
 	t_help	dt;
-// atexit(dd);
+	atexit(dd);
 	if (ac == 1)
 		ft_error("you have only one arg\n");
 	if (ac > 2)

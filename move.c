@@ -17,7 +17,7 @@ void	move_handle1(t_long *vars, t_help *dt)
 	if (vars->coins > 0 && vars->map[vars->y / 30][(vars->x - 30) / 30] == 'E')
 		return ;
 	if (vars->coins == 0 && vars->map[vars->y / 30][(vars->x - 30) / 30] == 'E')
-		exit(1);
+		exit(0);
 	vars->x -= 30;
 	if (vars->map[vars->y / 30][(vars->x) / 30] == 'C')
 	{
@@ -38,7 +38,7 @@ void	move_handle2(t_long *vars, t_help *dt)
 	if (vars->coins > 0 && vars->map[vars->y / 30][(vars->x + 30) / 30] == 'E')
 		return ;
 	if (vars->coins == 0 && vars->map[vars->y / 30][(vars->x + 30) / 30] == 'E')
-		exit(1);
+		exit(0);
 	vars->x += 30;
 	if (vars->map[vars->y / 30][(vars->x) / 30] == 'C')
 	{
@@ -59,7 +59,7 @@ void	move_handle3(t_long *vars, t_help *dt)
 	if (vars->coins > 0 && vars->map[(vars->y - 30) / 30][(vars->x) / 30] == 'E')
 		return ;
 	if (vars->coins == 0 && vars->map[(vars->y - 30) / 30][(vars->x) / 30] == 'E')
-		exit(1);
+		exit(0);
 	vars->y -= 30;
 	if (vars->map[vars->y / 30][(vars->x) / 30] == 'C')
 	{
@@ -80,7 +80,7 @@ void	move_handle4(t_long *vars, t_help *dt)
 	if (vars->coins > 0 && vars->map[(vars->y + 30) / 30][(vars->x) / 30] == 'E')
 		return ;
 	if (vars->coins == 0 && vars->map[(vars->y + 30) / 30][(vars->x) / 30] == 'E')
-		exit(1);
+		exit(0);
 	vars->y += 30;
 	if (vars->map[vars->y / 30][(vars->x) / 30] == 'C')
 	{

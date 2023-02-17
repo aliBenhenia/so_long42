@@ -12,6 +12,25 @@
 
 #include "so_long.h"
 
+void fill_map2(char *s,t_long *data)
+{
+	int		fd;
+	int		i;
+	char	*line;
+
+	fd = open(s, O_RDONLY);
+	line = get_next_line(fd);
+	i = 0;
+	data->map2 = (char **) malloc(data->height * sizeof(char *));
+	while (line)
+	{
+		data->map2[i] = line;
+		i++;
+		line = get_next_line(fd);
+	}
+	close(i);
+}
+
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);

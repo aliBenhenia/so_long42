@@ -12,6 +12,25 @@
 
 #include "so_long.h"
 
+void	norm_help(char *line, char *t, int i, int j)
+{
+	while (line)
+	{
+		strcpy(t, line);
+		line = get_next_line(i);
+		if (line == NULL)
+		{
+			while (t[j] != '\0' && t[j] != '\n')
+			{
+				if (t[j] != '1')
+					ft_error("should all be walls\n");
+				j++;
+			}
+		}
+		free(line);
+	}
+}
+
 int	containe_other(char *s)
 {
 	int	i;
@@ -74,15 +93,17 @@ void	check_wall_row(char *s)
 			ft_error("should all be walls");
 		j++;
 	}
-	free(line);
 	j = 0;
-	t = malloc(sizeof(char *) * strlen(line));
+	// t = malloc(sizeof(char *) * strlen(line));
+	// free(line);
 	while (line)
 	{
-		strcpy(t, line);
+		// strcpy(t, line);
+		t = line;
+		// free(line);
 		line = get_next_line(i);
 		if (line == NULL)
-		{
+		{printf("her : %s\n",t);
 			while (t[j] != '\0' && t[j] != '\n')
 			{
 				if (t[j] != '1')
@@ -90,8 +111,7 @@ void	check_wall_row(char *s)
 				j++;
 			}
 		}
-		free(line);
+		// free(line);
 	}
-	free(line);
-	free(t);
+	// free(t);
 }

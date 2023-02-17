@@ -11,28 +11,34 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	**fill_map2(char **map, int size, char *s)
+void	check_first_line(t_long *data)
 {
-	int		fd;
-	int		i;
-	char	*line;
+	int	j;
 
-	i = 0;
-	map = (char **) malloc(sizeof(char *) * size);
-	fd = open(s, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	j = 0;
+	while (data->map[0][j] && data->map[0][j] != '\n')
 	{
-		map[i] = line;
-		i++;
-		line = get_next_line(fd);
+		if (data->map[0][j] != '1')
+		{
+			ft_error("should all walls \n");
+		}
+		j++;
 	}
-	map[i] = NULL;
-	close(fd);
-	return (map);
 }
+void	check_last_line(t_long *data)
+{
+	int	j;
 
+	j = 0;
+	while (data->map[data->height - 1][j])
+	{
+		if (data->map[data->height - 1][j] != '1' && data->map[data->height - 1][j] != '\n')
+		{
+			ft_error("should all walls in last \n");
+		}
+		j++;
+	}
+}
 void	count_height(char *s, t_long *data)
 {
 	int		i;
@@ -111,11 +117,11 @@ void	count_collect(char *s, t_long *data)
 
 void	parsing(char *s, t_long *data)
 {
-	char **map2;
+	char	**map2;
+
 	map2 = NULL;
 	check_extention(s);
 	check_arrounded(s);
-	check_wall_row(s);
 	check_characters(s);
 	check_rectangle(s);
 	check_correct_char(s);
@@ -123,7 +129,8 @@ void	parsing(char *s, t_long *data)
 	count_height(s, data);
 	count_collect(s, data);
 	fill_map(s, data);
-	map2 = fill_map2(map2, data->height, s);
-	if_valid_map(map2, data->height, data->width);
-	ft_free(map2);
+	check_first_line(data);
+	check_last_line(data);
+	fill_map2(s, data);
+	if_valid_map(data->map2, data->height, data->width);
 }
