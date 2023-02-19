@@ -43,12 +43,12 @@ void	check_extention(char *s)
 		}
 		else
 			close(i);
-		return ;
 	}
-	ft_error("file not ending with .ber\n");
+	else
+		ft_error("file not ending with .ber\n");
 }
 
-int	check_end_of_map(char *s)
+static int	check_end_of_map(char *s)
 {
 	int	i;
 

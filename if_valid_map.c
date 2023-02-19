@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	check_if_valid(char **map2, int h, int w)
+static int	check_if_valid(char **map2, int h, int w)
 {
 	int	y;
 	int	x;
@@ -41,7 +41,7 @@ int	check_if_valid(char **map2, int h, int w)
 	return (0);
 }
 
-int	check_if_valid2(char **map2, int h, int w)
+static int	check_if_valid2(char **map2, int h, int w)
 {
 	int	y;
 	int	x;
@@ -63,7 +63,7 @@ int	check_if_valid2(char **map2, int h, int w)
 	return (0);
 }
 
-int	check_if_arounded_p(char **map2, int x, int y)
+static int	check_if_arounded_p(char **map2, int x, int y)
 {
 	int	flag;
 

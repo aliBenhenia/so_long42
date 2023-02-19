@@ -12,25 +12,6 @@
 
 #include "so_long.h"
 
-void	norm_help(char *line, char *t, int i, int j)
-{
-	while (line)
-	{
-		strcpy(t, line);
-		line = get_next_line(i);
-		if (line == NULL)
-		{
-			while (t[j] != '\0' && t[j] != '\n')
-			{
-				if (t[j] != '1')
-					ft_error("should all be walls\n");
-				j++;
-			}
-		}
-		free(line);
-	}
-}
-
 int	containe_other(char *s)
 {
 	int	i;
@@ -53,6 +34,8 @@ void	check_correct_char(char *s)
 
 	i = open(s, O_RDONLY);
 	line = get_next_line(i);
+	if (line == NULL)
+		ft_error("error\n");
 	while (line)
 	{
 		if (containe_other(line))
@@ -60,6 +43,7 @@ void	check_correct_char(char *s)
 		free(line);
 		line = get_next_line(i);
 	}
+	close(i);
 }
 
 void	count_width(char *s, t_long *data)
@@ -75,43 +59,4 @@ void	count_width(char *s, t_long *data)
 		data->width++;
 	free(line);
 	close(fd);
-}
-
-void	check_wall_row(char *s)
-{
-	int		i;
-	int		j;
-	char	*line;
-	char	*t;
-
-	i = open(s, O_RDONLY);
-	j = 0;
-	line = get_next_line(i);
-	while (line[j] != '\0' && line[j] != '\n')
-	{
-		if (line[j] != '1')
-			ft_error("should all be walls");
-		j++;
-	}
-	j = 0;
-	// t = malloc(sizeof(char *) * strlen(line));
-	// free(line);
-	while (line)
-	{
-		// strcpy(t, line);
-		t = line;
-		// free(line);
-		line = get_next_line(i);
-		if (line == NULL)
-		{printf("her : %s\n",t);
-			while (t[j] != '\0' && t[j] != '\n')
-			{
-				if (t[j] != '1')
-					ft_error("should all be walls\n");
-				j++;
-			}
-		}
-		// free(line);
-	}
-	// free(t);
 }

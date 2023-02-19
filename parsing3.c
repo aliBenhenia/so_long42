@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	line_contain_collect(char *s, char c)
+static int	line_contain_collect(char *s, char c)
 {
 	int	i;
 
@@ -47,6 +47,7 @@ int	check_collect(char *s, char c)
 		free(line);
 		line = get_next_line(i);
 	}
+	close(i);
 	if (m == 1)
 		return (1);
 	else
@@ -72,12 +73,14 @@ void	check_rectangle(char *s)
 
 	i = open(s, O_RDONLY);
 	line = get_next_line(i);
-	len = strlen(line);
+	if (line == NULL)
+		ft_error("errour\n");
+	len = ft_strlen1(line);
 	if (line[len - 1] == '\n')
 		len--;
 	while (line)
 	{
-		len2 = strlen(line) - 1;
+		len2 = ft_strlen1(line) - 1;
 		if (line[len2] != '\n')
 			len2 = len2 + 1;
 		if (len != len2)
@@ -85,4 +88,5 @@ void	check_rectangle(char *s)
 		free(line);
 		line = get_next_line(i);
 	}
+	close(i);
 }

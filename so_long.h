@@ -17,8 +17,6 @@
 # include <mlx.h>
 # include <unistd.h>
 # include<fcntl.h>
-# include<stdio.h>
-# include<string.h>
 # include "./get_next_line42/get_next_line.h"
 
 typedef struct t_long
@@ -55,11 +53,15 @@ void	check_correct_char(char *s);
 void	count_width(char *s, t_long *data);
 void	render_map(t_long *data, t_help *dt);
 int		move(int keycode, t_long *vars, t_help *dt);
-void	check_wall_row(char *s);
 void	ft_free(char *p[]);
 void	ft_putstr(char *s);
 void	ft_putnbr_fd(int n, int fd);
 void	if_valid_map(char **map2, int h, int w);
-void 	fill_map2(char *s, t_long *data);
+void	fill_map2(char *s, t_long *data);
 int		check_one_chracter(char *s, char c);
+void	count_height(char *s, t_long *data);
+void	check_last_line(t_long *data);
+void	check_first_line(t_long *data);
+int		ft_strlen1(char *s);
+void	ft_strcpy(char *dst, char *src);
 #endif

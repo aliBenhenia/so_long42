@@ -11,56 +11,8 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-void	check_first_line(t_long *data)
-{
-	int	j;
 
-	j = 0;
-	while (data->map[0][j] && data->map[0][j] != '\n')
-	{
-		if (data->map[0][j] != '1')
-		{
-			ft_error("should all walls \n");
-		}
-		j++;
-	}
-}
-void	check_last_line(t_long *data)
-{
-	int	j;
-
-	j = 0;
-	while (data->map[data->height - 1][j])
-	{
-		if (data->map[data->height - 1][j] != '1' && data->map[data->height - 1][j] != '\n')
-		{
-			ft_error("should all walls in last \n");
-		}
-		j++;
-	}
-}
-void	count_height(char *s, t_long *data)
-{
-	int		i;
-	int		fd;
-	char	*line;
-
-	fd = open(s, O_RDONLY);
-	line = get_next_line(fd);
-	i = 0;
-	while (line)
-	{
-		data->height++;
-		free(line);
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-	}
-	free(line);
-	close(fd);
-}
-
-void	fill_map(char *s, t_long *data)
+static void	fill_map(char *s, t_long *data)
 {
 	int		fd;
 	int		i;
@@ -68,6 +20,8 @@ void	fill_map(char *s, t_long *data)
 
 	fd = open(s, O_RDONLY);
 	line = get_next_line(fd);
+	if (line == NULL)
+		ft_error("error\n");
 	i = 0;
 	data->map = (char **) malloc(data->height * sizeof(char *));
 	while (line)
@@ -79,7 +33,7 @@ void	fill_map(char *s, t_long *data)
 	close(i);
 }
 
-int	count_line_collect(char *s)
+static int	count_line_collect(char *s)
 {
 	int	i;
 	int	j;
@@ -99,13 +53,15 @@ int	count_line_collect(char *s)
 	return (j);
 }
 
-void	count_collect(char *s, t_long *data)
+static void	count_collect(char *s, t_long *data)
 {
 	int		fd;
 	char	*line;
 
 	fd = open(s, O_RDONLY);
 	line = get_next_line(fd);
+	if (line == NULL)
+		ft_error("error\n");
 	while (line)
 	{
 		data->coins += count_line_collect(line);
