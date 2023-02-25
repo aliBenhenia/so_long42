@@ -14,24 +14,29 @@
 
 static void	norm_help(t_long *data, t_help *dt, int f, int a)
 {
+	int	flag;
+
+	flag = 0;
 	if (data->map[f][a] == '1')
-		mlx_put_image_to_window(data->mlx,
-			data->wind, data->img[0], a * 30, f * 30);
+		flag = mlx_put_image_to_window(data->mlx,
+				data->wind, data->img[0], a * 30, f * 30);
 	else if (data->map[f][a] == 'C')
-		mlx_put_image_to_window(data->mlx,
-			data->wind, data->img[1], a * 30, f * 30);
+		flag = mlx_put_image_to_window(data->mlx,
+				data->wind, data->img[1], a * 30, f * 30);
 	else if (data->map[f][a] == 'P' && dt->fx == -1)
 	{
 		dt->fx = a * 30;
 		dt->fy = f * 30;
-		mlx_put_image_to_window(data->mlx,
-			data->wind, data->img[2], a * 30, f * 30);
+		flag = mlx_put_image_to_window(data->mlx,
+				data->wind, data->img[2], a * 30, f * 30);
 	}
 	else if (data->map[f][a] == 'E')
 	{
-		mlx_put_image_to_window(data->mlx,
-			data->wind, data->img[3], a * 30, f * 30);
+		flag = mlx_put_image_to_window(data->mlx,
+				data->wind, data->img[3], a * 30, f * 30);
 	}
+	if (flag == -1)
+		ft_error("error function returns -1\n");
 }
 
 void	render_map(t_long *data, t_help *dt)

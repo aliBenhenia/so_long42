@@ -44,6 +44,8 @@ static void	load_imgs(t_long *data)
 	data->img[3] = mlx_xpm_file_to_image(data->mlx,
 			data->pic[3],
 			&data->y, &data->x);
+	if (!data->img[0] || !data->img[1] || !data->img[2] || !data->img[3])
+		ft_error("error\n");
 }
 
 static void	init_data(t_long *data, t_help *dt)
@@ -52,6 +54,10 @@ static void	init_data(t_long *data, t_help *dt)
 	dt->fy = -1;
 	data->moves = 0;
 	data->mlx = mlx_init();
+	if (data->mlx == NULL)
+	{
+		ft_error("error in mlx init\n");
+	}
 }
 
 static int	close1(void)
@@ -73,6 +79,10 @@ int	main(int ac, char *av[])
 	data.wind = mlx_new_window(data.mlx,
 			data.width * 30,
 			data.height * 30, "so_long");
+	if (data.wind == NULL)
+	{
+		ft_error("error in mlx windou\n");
+	}
 	load_imgs(&data);
 	render_map(&data, &dt);
 	data.x = dt.fx;

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	containe_other(char *s)
+static int	containe_other(char *s)
 {
 	int	i;
 
@@ -54,6 +54,10 @@ void	count_width(char *s, t_long *data)
 
 	fd = open(s, O_RDONLY);
 	line = get_next_line(fd);
+	if (line == NULL)
+	{
+		ft_error("error\n");
+	}
 	i = 0;
 	while (line[i] && line[i++] != '\n')
 		data->width++;

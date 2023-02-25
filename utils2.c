@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	handle_norm(int m, int i)
+static int	handle_norm(int m, int i)
 {
 	close(i);
 	if (m == 1)
@@ -55,7 +55,6 @@ int	check_one_chracter(char *s, char c)
 		free(line);
 		line = get_next_line(i);
 	}
-	close(i);
 	return (handle_norm(m, i));
 }
 
@@ -81,8 +80,7 @@ void	check_last_line(t_long *data)
 	j = 0;
 	while (data->map[data->height - 1][j])
 	{
-		if (data->map[data->height - 1][j] != '1'
-			&& data->map[data->height - 1][j] != '\n')
+		if (data->map[data->height - 1][j] != '1')
 		{
 			ft_error("should all walls in last \n");
 		}

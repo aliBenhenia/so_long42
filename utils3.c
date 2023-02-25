@@ -21,7 +21,7 @@ void	count_height(char *s, t_long *data)
 	fd = open(s, O_RDONLY);
 	line = get_next_line(fd);
 	if (line == NULL)
-		ft_error("error\n");
+		ft_error("error dd\n");
 	i = 0;
 	while (line)
 	{

@@ -29,11 +29,9 @@ void	check_extention(char *s)
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
-		i++;
+	i = ft_strlen1(s);
 	if (s[i - 1] == 'r' && s[i - 2] == 'e' && s[i - 3] == 'b'
-		&& s[i - 4] == '.')
+		&& s[i - 4] == '.' && s[i -5])
 	{
 		i = open(s, O_RDONLY);
 		if (i == -1)
@@ -73,13 +71,13 @@ void	check_arrounded(char *s)
 	i = open(s, O_RDONLY);
 	line = get_next_line(i);
 	if (line == NULL)
-		ft_error("file is empty\n");
+		ft_error("file is empty or not found\n");
 	while (line)
 	{
 		if (line[0] != '1' || check_end_of_map(line))
 		{
 			free(line);
-			ft_error("error map \n");
+			ft_error("error map not ended with walls\n");
 		}
 		free(line);
 		line = get_next_line(i);
@@ -98,7 +96,7 @@ int	line_contain(char *s, char c)
 	r = -1;
 	while (s[i])
 	{
-		if (s[i++] == c && f == 0)
+		if (s[i] == c && f == 0)
 		{
 			f = 1;
 			r = 1;
@@ -108,9 +106,10 @@ int	line_contain(char *s, char c)
 			r = 0;
 			break ;
 		}
+		i++;
 	}
 	if (r == 0)
-		ft_error("line contain more then one exit\n");
+		ft_error("line contain more then one character\n");
 	else if (r == 1)
 		return (1);
 	return (0);

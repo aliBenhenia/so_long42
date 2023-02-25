@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 #ifndef SO_LONG_H
 # define  SO_LONG_H
 # include <stdlib.h>
 # include <mlx.h>
 # include <unistd.h>
 # include<fcntl.h>
-# include "./get_next_line42/get_next_line.h"
+# include "./get_next_line.h"
 
 typedef struct t_long
 {

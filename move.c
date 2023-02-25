@@ -16,6 +16,10 @@ static void	move_handle1(t_long *vars, t_help *dt)
 {
 	if (vars->coins > 0 && vars->map[vars->y / 30][(vars->x - 30) / 30] == 'E')
 		return ;
+	vars->moves++;
+	ft_putstr("moves : ");
+	ft_putnbr_fd(vars->moves, 1);
+	ft_putstr("\n");
 	if (vars->coins == 0 && vars->map[vars->y / 30][(vars->x - 30) / 30] == 'E')
 		exit(0);
 	vars->x -= 30;
@@ -28,16 +32,16 @@ static void	move_handle1(t_long *vars, t_help *dt)
 	render_map(vars, dt);
 	mlx_put_image_to_window(vars->mlx,
 		vars->wind, vars->img[2], vars->x, vars->y);
-	vars->moves++;
-	ft_putstr("moves : ");
-	ft_putnbr_fd(vars->moves, 1);
-	ft_putstr("\n");
 }
 
 static void	move_handle2(t_long *vars, t_help *dt)
 {
 	if (vars->coins > 0 && vars->map[vars->y / 30][(vars->x + 30) / 30] == 'E')
 		return ;
+	vars->moves++;
+	ft_putstr("moves : ");
+	ft_putnbr_fd(vars->moves, 1);
+	ft_putstr("\n");
 	if (vars->coins == 0 && vars->map[vars->y / 30][(vars->x + 30) / 30] == 'E')
 		exit(0);
 	vars->x += 30;
@@ -50,10 +54,6 @@ static void	move_handle2(t_long *vars, t_help *dt)
 	render_map(vars, dt);
 	mlx_put_image_to_window(vars->mlx,
 		vars->wind, vars->img[2], vars->x, vars->y);
-	vars->moves++;
-	ft_putstr("moves : ");
-	ft_putnbr_fd(vars->moves, 1);
-	ft_putstr("\n");
 }
 
 static void	move_handle3(t_long *vars, t_help *dt)
@@ -61,6 +61,10 @@ static void	move_handle3(t_long *vars, t_help *dt)
 	if (vars->coins > 0
 		&& vars->map[(vars->y - 30) / 30][(vars->x) / 30] == 'E')
 		return ;
+	vars->moves++;
+	ft_putstr("moves : ");
+	ft_putnbr_fd(vars->moves, 1);
+	ft_putstr("\n");
 	if (vars->coins == 0
 		&& vars->map[(vars->y - 30) / 30][(vars->x) / 30] == 'E')
 		exit(0);
@@ -74,10 +78,6 @@ static void	move_handle3(t_long *vars, t_help *dt)
 	render_map(vars, dt);
 	mlx_put_image_to_window(vars->mlx,
 		vars->wind, vars->img[2], vars->x, vars->y);
-	vars->moves++;
-	ft_putstr("moves : ");
-	ft_putnbr_fd(vars->moves, 1);
-	ft_putstr("\n");
 }
 
 static void	move_handle4(t_long *vars, t_help *dt)
@@ -85,6 +85,10 @@ static void	move_handle4(t_long *vars, t_help *dt)
 	if (vars->coins > 0
 		&& vars->map[(vars->y + 30) / 30][(vars->x) / 30] == 'E')
 		return ;
+	vars->moves++;
+	ft_putstr("moves : ");
+	ft_putnbr_fd(vars->moves, 1);
+	ft_putstr("\n");
 	if (vars->coins == 0
 		&& vars->map[(vars->y + 30) / 30][(vars->x) / 30] == 'E')
 		exit(0);
@@ -98,10 +102,6 @@ static void	move_handle4(t_long *vars, t_help *dt)
 	render_map(vars, dt);
 	mlx_put_image_to_window(vars->mlx,
 		vars->wind, vars->img[2], vars->x, vars->y);
-	vars->moves++;
-	ft_putstr("moves : ");
-	ft_putnbr_fd(vars->moves, 1);
-	ft_putstr("\n");
 }
 
 int	move(int keycode, t_long *vars, t_help *dt)
